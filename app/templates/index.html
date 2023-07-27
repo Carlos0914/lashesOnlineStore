@@ -1,0 +1,94 @@
+<head>
+  <title>Inicio | Idalia López</title>
+  {% load static %} {% load bootstrap5 %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'styles/carousel.css' %}"
+  />
+  {% bootstrap_css %} {% bootstrap_javascript %}
+</head>
+{% include "./header.html" %} {% load static %}
+<div style="min-height: calc(100vh - 200px)">
+  <div
+    id="carouselExampleSlidesOnly"
+    class="carousel slide"
+    style="background: #c772c777"
+    data-bs-interval="5000"
+    data-bs-ride="carousel"
+    data
+  >
+    <div
+      class="carousel-inner d-flex"
+      role="listbox"
+      style="max-width: 1500px; margin: 0 auto"
+    >
+      <div class="carousel-item m-0 active">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="{% static 'images/carousel1.jpg' %}" alt="Image no:1" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item m-0">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="{% static 'images/carousel2.jpg' %}" alt="Image no:2" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item m-0">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="{% static 'images/carousel3.jpg' %}" alt="Image no:3" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item m-0">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="{% static 'images/carousel4.jpg' %}" alt="Image no:4" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item m-0">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="{% static 'images/carousel5.jpg' %}" alt="Image no:5" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>{% lorem 7 p random %}</div>
+  <div>
+    <script>
+      let items = document.querySelectorAll(".carousel .carousel-item");
+
+      items.forEach((el) => {
+        const minPerSlide = 4;
+        let next = el.nextElementSibling;
+        for (var i = 1; i < minPerSlide; i++) {
+          if (!next) {
+            // wrap carousel by using first child
+            next = items[0];
+          }
+          let cloneChild = next.cloneNode(true);
+          el.appendChild(cloneChild.children[0]);
+          next = next.nextElementSibling;
+        }
+      });
+    </script>
+  </div>
+</div>
+{% include './footer.html' %}

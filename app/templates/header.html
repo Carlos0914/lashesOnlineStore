@@ -1,0 +1,33 @@
+<head>
+  {% load static %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'styles/header.css' %}"
+  />
+</head>
+<div class="container">
+  <a href="{% url 'index' %}"
+    ><img class="logo" src="{% static 'images/logo.jpg'%}"
+  /></a>
+  <div class="navigation">
+    <a href="{% url 'index' %}"
+      ><span class="{% if request.path == '/' %}active{% endif %}"
+        >Inicio</span
+      ></a
+    ><a href="{% url 'catalog' %}"
+      ><span class="{% if request.path == '/catalogo' %}active{% endif %}"
+        >Catálogo</span
+      ></a
+    >
+    <a href="{% url 'schedule' %}"
+      ><span class="{% if request.path == '/agenda' %}active{% endif %}"
+        >Agenda tu cita</span
+      ></a
+    ><a href="{% url 'location' %}"
+      ><span class="{% if request.path == '/ubicacion' %}active{% endif %}"
+        >Ubicación</span
+      ></a
+    >
+  </div>
+</div>

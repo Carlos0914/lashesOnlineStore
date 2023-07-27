@@ -1,0 +1,46 @@
+.container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #BABABA;
+  margin: 0 !important;
+  max-width: 100%;
+}
+
+.logo {
+  object-fit: contain;
+  height: 100%;
+  padding: 32px;
+  box-sizing: content-box;
+}
+
+.navigation {
+  height: 100%;
+  padding-right: 16px;
+  display: flex;
+  font-size: 18px;
+}
+
+.navigation span {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.navigation span.active {
+  background-color: #c541cd30;
+}
+
+.navigation a,
+.navigation a:active,
+.navigation a:focus {
+  color: #f151e6;
+  text-decoration: none;
+}
+
+.navigation span:hover  {
+  color: #ff00ff;
+}
