@@ -9,3 +9,8 @@
   {% endcomment %} {% bootstrap_css %} {% bootstrap_javascript %}
 </head>
 {% include "./header.html" %}
+<div style="flex-grow: 1;">
+  {% for product in products %}
+  {% endfor %}
+</div>
+{% include "./footer.html" %}

@@ -4,4 +4,13 @@
   type="text/css"
   href="{% static 'styles/footer.css' %}"
 />
-<div class="footer-container">Footer</div>
+<footer class="footer-container">
+  <img class="footer-logo" src="{% static './images/logo.jpg' %}" />
+  <span class="copyright-notice">Copyright © Idalia López, 2023</span>
+  <span class="links">
+    <a href="{% url 'index' %}">Ir al inicio</a> |
+    <a href="https://www.facebook.com/Eyelashextensionynailstudio" target="_blank" rel="noreferrer">Facebook</a>
+    |
+    <a href="#">Volver arriba</a>
+  </span>
+</footer>

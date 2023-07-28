@@ -25,14 +25,24 @@
 /* medium and up screens */
 @media (min-width: 768px) {
 
-    .carousel-inner .carousel-item-end.active,
-    .carousel-inner .carousel-item-next {
+    .d-3 .carousel-item-end.active,
+    .d-3 .carousel-item-next {
         transform: translateX(33.33%);
     }
 
-    .carousel-inner .carousel-item-start.active,
-    .carousel-inner .carousel-item-prev {
+    .d-3 .carousel-item-start.active,
+    .d-3 .carousel-item-prev {
         transform: translateX(-33.33%);
+    }
+
+    .d-2 .carousel-item-end.active,
+    .d-2 .carousel-item-next {
+        transform: translateX(50%);
+    }
+
+    .d-2 .carousel-item-start.active,
+    .d-2 .carousel-item-prev {
+        transform: translateX(-50%);
     }
 
 }

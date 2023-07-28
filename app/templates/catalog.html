@@ -1,11 +1,92 @@
 <head>
   <title>Catálogo | Idalia López</title>
-  {% load static %} {% load bootstrap5 %} {% comment %}
+  {% load static %} {% load bootstrap5 %}
   <link
     rel="stylesheet"
     type="text/css"
     href="{% static 'styles/carousel.css' %}"
   />
-  {% endcomment %} {% bootstrap_css %} {% bootstrap_javascript %}
+  {% bootstrap_css %} {% bootstrap_javascript %}
 </head>
 {% include "./header.html" %}
+<div
+  style="
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 3rem;
+  "
+>
+  <h4>Productos y servicios</h4>
+  <p>Echa un vistazo a los productos y servicios disponibles</p>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#mainCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#mainCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+  <div id="mainCarousel" class="carousel slide">
+    <div
+      class="carousel-inner d-2 d-flex"
+      role="listbox"
+      style="max-width: 1500px; margin: 0 auto"
+    >
+      {% for product in products %}
+      <div
+        class="carousel-item m-0 {% if forloop.counter == 1 %}active{% endif %}"
+        style="gap: 16px"
+      >
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-img" style="background: #c772c777">
+              {% for image in product.image_list %}
+              <img
+                loading="lazy"
+                class="w-100"
+                style="height: 350px; object-fit: contain"
+                src="{{image.url}}"
+                alt="Image no:1"
+              />
+              {%endfor%}
+            </div>
+            <div class="card-body" style="height: 320px">
+              <h5 class="card-title">{{product.name}}</h5>
+              <h6 class="card-subtitle">${{product.price}}</h6>
+              <p class="card-text">{{product.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script>
+    let items = document.querySelectorAll(".carousel .carousel-item");
+
+    items.forEach((el) => {
+      const minPerSlide = 3;
+      let next = el.nextElementSibling;
+      for (var i = 1; i < minPerSlide; i++) {
+        if (!next) {
+          // wrap carousel by using first child
+          next = items[0];
+        }
+        let cloneChild = next.cloneNode(true);
+        el.appendChild(cloneChild.children[0]);
+        next = next.nextElementSibling;
+      }
+    });
+  </script>
+</div>
+{% include "./footer.html" %}
