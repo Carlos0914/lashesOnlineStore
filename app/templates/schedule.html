@@ -1,16 +1,58 @@
 <head>
   <title>Agenda tu cita | Idalia López</title>
-  {% load static %} {% load bootstrap5 %} {% comment %}
+  {% load static %} {% load bootstrap5 %}
   <link
     rel="stylesheet"
     type="text/css"
-    href="{% static 'styles/carousel.css' %}"
+    href="{% static 'styles/calendar.css' %}"
   />
-  {% endcomment %} {% bootstrap_css %} {% bootstrap_javascript %}
+  {% bootstrap_css %} {% bootstrap_javascript %}
 </head>
 {% include "./header.html" %}
-<div style="flex-grow: 1;">
-  {% for product in products %}
-  {% endfor %}
+<div style="flex-grow: 1">
+  <h4 class="pt-3 text-center">Agenda tu cita</h4>
+  <p class="text-center">Revisa la agenda y separa tu cita ahora mismo</p>
+  <div class="d-flex">
+    <div class="d-flex flex-grow-1" style="justify-content: center">
+      <div class="d-flex flex-column p-3">
+        <span><span class="sq-g"></span>Disponible</span>
+        <span><span class="sq-y"></span>Pocos espacios</span>
+        <span><span class="sq-r"></span>Agenda llena</span>
+      </div>
+      <div id="calendar" class="p-3" style="width: 100%; max-width: 700px">
+        <span class="d-flex calendar-year"></span>
+        <span class="d-flex">
+          <button
+            id="buttonPrevMonth"
+            onclick="offset-=1; displayCalendar(offset)"
+          >
+            &lt;
+          </button>
+          <span class="calendar-month"> </span>
+          <button
+            id="buttonNextMonth"
+            onclick="offset+=1; displayCalendar(offset)"
+          >
+            &gt;
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="collapse collapse-horizontal p-3" id="appointmentDrawer">
+      <div class="card card-body d-flex flex-column" style="width: 600px">
+        <h3 class="m-auto">Horarios disponibles</h3>
+        <span id="selectedDate" class="m-auto" style="color: #bbb"></span>
+        <form action="/agenda" method="post" enctype="multipart/form-data">
+          <h5>Por favor, completa los datos de tu cita a continuación:</h5>
+          {% csrf_token %} {{ form }}
+          <input type="submit" value="Crear cita" />
+        </form>
+      </div>
+    </div>
+  </div>
+  {{ info|json_script:"agenda-data" }}
+  <script src="{% static 'scripts/buildCalendar.js' %}"></script>
+  <script src="{% static 'scripts/displayCalendar.js' %}"></script>
 </div>
 {% include "./footer.html" %}

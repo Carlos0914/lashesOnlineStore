@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import mimetypes
+from dotenv import load_dotenv
+
+load_dotenv()
 
 mimetypes.add_type("text/css", ".css", True)
 
@@ -29,7 +32,7 @@ SECRET_KEY = 'django-insecure-84ug70ht)p0ju4ll^d1jigxa(@i&#9*8y5qje=e)kut^ka!%o6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0", "192.168.100.197"]
+ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0", "192.168.100.197", "192.168.100.127", "localhost", ".ngrok-free.app"]
 
 
 # Application definition
@@ -80,6 +83,16 @@ WSGI_APPLICATION = 'lashesOnlineStore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'lashes-and-nails-app',
+        'ENFORCE_SCHEMA': True,
+        'CLIENT': {
+            'host': os.getenv("MONGO_URI")
+        }
+    }
+}
 
 
 # Password validation
@@ -117,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 MEDIA_ROOT = BASE_DIR
-
+STATIC_URL = "app/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -131,7 +144,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 DEFAULT_FILE_STORAGE = 'app.custom_storage.MediaStorage'
-STATICFILES_STORAGE = 'app.custom_storage.StaticStorage'
+# STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+# STATICFILES_STORAGE = 'app.custom_storage.StaticStorage'

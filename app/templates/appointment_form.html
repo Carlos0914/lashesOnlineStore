@@ -1,0 +1,17 @@
+<div class="d-flex flex-column">
+  {{form.appointment_date}}
+  <label for="{{ form.hour.id_for_label }}">Hora: </label>
+  {{form.hour}}
+  <label for="{{ form.service.id_for_label}}">Servicio</label>
+  {{form.service}}
+  <label for="{{form.phone_number.id_for_labeld}}"
+    >Teléfono (a 10 dígitos)</label
+  >
+  {{form.phone_number}}
+  <label for="{{ form.message.id_for_label}}">Mensaje</label>
+  {{form.message}}
+  <label for="{{form.image.id_for_label}}"
+    >Agrega una imagen de referencia (opcional)</label
+  >
+  {{form.image}}
+</div>
