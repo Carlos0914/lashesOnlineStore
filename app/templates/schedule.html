@@ -15,9 +15,9 @@
   <div class="d-flex">
     <div class="d-flex flex-grow-1" style="justify-content: center">
       <div class="d-flex flex-column p-3">
-        <span><span class="sq-g"></span>Disponible</span>
-        <span><span class="sq-y"></span>Pocos espacios</span>
-        <span><span class="sq-r"></span>Agenda llena</span>
+        <span class="label"><span class="sq-g"></span>Disponible</span>
+        <span class="label"><span class="sq-y"></span>Pocos espacios</span>
+        <span class="label"><span class="sq-r"></span>Agenda llena</span>
       </div>
       <div id="calendar" class="p-3" style="width: 100%; max-width: 700px">
         <span class="d-flex calendar-year"></span>
@@ -40,13 +40,15 @@
     </div>
 
     <div class="collapse collapse-horizontal p-3" id="appointmentDrawer">
-      <div class="card card-body d-flex flex-column" style="width: 600px">
+      <div class="card card-body d-flex flex-column p-3 form-control" style="width: 600px">
         <h3 class="m-auto">Horarios disponibles</h3>
         <span id="selectedDate" class="m-auto" style="color: #bbb"></span>
         <form action="/agenda" method="post" enctype="multipart/form-data">
           <h5>Por favor, completa los datos de tu cita a continuación:</h5>
           {% csrf_token %} {{ form }}
-          <input type="submit" value="Crear cita" />
+          <div class="d-grid mt-3">
+            <button class="btn btn-primary" type="submit">Crear cita</button>
+          </div>
         </form>
       </div>
     </div>

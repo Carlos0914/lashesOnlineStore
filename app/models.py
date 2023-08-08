@@ -19,13 +19,17 @@ class Product(models.Model):
     objects = models.DjongoManager()
 
 
-class Appointment(models.Model):
+class Request(models.Model):
     year = models.IntegerField()
     month = models.IntegerField()
-    days = models.JSONField()
+    day = models.IntegerField()
+    data = models.JSONField()
 
-    class Meta:
-        abstract: True
+
+class Agenda(models.Model):
+    year = models.IntegerField()
+    month = models.IntegerField()
+    data = models.JSONField()
 
 
 admin.site.register(Product)

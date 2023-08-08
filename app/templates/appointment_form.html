@@ -1,8 +1,10 @@
-<div class="d-flex flex-column">
+<div class="d-flex flex-column gap-2">
   {{form.appointment_date}}
-  <label for="{{ form.hour.id_for_label }}">Hora: </label>
+  <label for="{{ form.name.id_for_label}}">Tu nombre</label>
+  {{form.name}}
+  <label for="{{ form.hour.id_for_label }}">Hora de tu cita</label>
   {{form.hour}}
-  <label for="{{ form.service.id_for_label}}">Servicio</label>
+  <label for="{{ form.service.id_for_label}}">Servicio deseado</label>
   {{form.service}}
   <label for="{{form.phone_number.id_for_labeld}}"
     >Teléfono (a 10 dígitos)</label

@@ -116,33 +116,12 @@ function clickHandler(year, month, day, day_data) {
     "06:00 PM",
   ];
   for (let i = 0; i < hours.length; ++i) {
-    if (day_data.available[i]) {
+    if (day_data.available[i] === null) {
       option = document.createElement("option");
       option.value = i;
       option.innerText = hours[i];
       selectHour.append(option);
     }
   }
-  // day_data.available.forEach((val, index) => {
-  //   if (val) {
-  //     pill = document.createElement("a");
-  //     pill.href = "#";
-  //     pill.classList.add("col-sm-12");
-  //     pill.classList.add("col-md-3");
-  //     pill.classList.add("badge");
-  //     pill.classList.add("bg-light");
-  //     pill.classList.add("text-dark");
-  //     pill.classList.add("schedule-hour-button");
-  //     pill.onclick = (e) => {
-  //       prev = document
-  //         .querySelectorAll(".selected")
-  //         .forEach((item) => item.classList.remove("selected"));
-  //       e.target.classList.add("selected");
-  //       innerFormCollapse.show();
-  //     };
-  //     pill.innerText = hours[index];
-  //     cont.appendChild(pill);
-  //   }
-  // });
 }
 displayCalendar(0);
